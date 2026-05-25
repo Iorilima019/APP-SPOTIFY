@@ -11,6 +11,26 @@ main {
     flex: 1;
 }
 
+.nav-topo {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    padding: 16px 0;
+    margin-bottom: 32px;
+}
+
+.nav-topo a {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.nav-topo a:hover {
+    color: #1db954;
+}
+
 .form-box {
     width: 100%;
     max-width: 420px;
