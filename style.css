@@ -36,6 +36,13 @@ main {
     max-width: 420px;
 }
 
+.album-thumb {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
 .form-control:focus {
     border-color: #1db954;
     box-shadow: 0 0 0 0.25rem rgba(29, 185, 84, 0.18);
