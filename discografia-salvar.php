@@ -1,27 +1,31 @@
 <?php
-    $artista = $_POST['artista'];
-    $nome = $_POST['nome'];
-    $ano = $_POST['ano'];
-    $tipo = $_POST['tipo'];
-    $capa = $_POST['capa'];
+include 'inc-conexao.php';
 
-    echo "$artista - $nome - $ano - $tipo - $capa";
+$artista = $_POST['artista'];
+$nome = $_POST['nome'];
+$ano = $_POST['ano'];
+$tipo = $_POST['tipo'];
+$foto = $_POST['foto'];
 
+$sql = "INSERT INTO tb_discografia (artista, nome, ano, tipo, foto) VALUES (?, ?, ?, ?, ?)";
+$stmt = mysqli_prepare($conexao, $sql);
 
-    $conexao = mysqli_connect("localhost", "root", "", "db_spotify");
-    if ($conexao) {
-        die("<h3>ERRO</h3>" . mysqli_connect_error());
-    }
+if (!$stmt) {
+    die("<h3>Erro ao preparar o cadastro</h3>" . mysqli_error($conexao));
+}
 
-    $sql = "INSERT INTO tb_albuns(artista, nome, ano, tipo, capa) VALUES ('$artista', '$nome', '$ano', '$tipo', '$capa')";
+mysqli_stmt_bind_param($stmt, "ssiss", $artista, $nome, $ano, $tipo, $foto);
+$resultado = mysqli_stmt_execute($stmt);
+$erro = mysqli_stmt_error($stmt);
 
-    $resultado = mysqli_query($conexao , $sql);
+mysqli_stmt_close($stmt);
+mysqli_close($conexao);
 
-    if ($resultado) {
-        echo "<h3>Cadastrado com sucesso!</h3>";
-    } else {
-        echo "<h3>Ferro foi tudo</h3>";
-    }
+if ($resultado) {
+    header("Location: discografia-listagem.php");
+    exit;
+}
 
-    mysqli_close($conexao);
+echo "<h3>Erro ao cadastrar discografia.</h3>";
+echo "<p>" . htmlspecialchars($erro) . "</p>";
 ?>
