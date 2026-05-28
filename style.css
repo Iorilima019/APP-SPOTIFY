@@ -72,3 +72,18 @@ main {
 .social-links a:hover {
     color: #1db954;
 }
+
+.img-album {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+}
+
+.txt-album {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.corSist{
+    color: #008b4a;
+}
