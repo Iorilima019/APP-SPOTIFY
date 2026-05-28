@@ -42,7 +42,7 @@ include 'inc-cabeca.php';
                                 echo '<tr>';
                                 echo '<td>' . htmlspecialchars($linha_resultado['id']) . '</td>';
                                 echo '<td>' . htmlspecialchars($linha_resultado['artista']) . '</td>';
-                                echo '<td>' . htmlspecialchars($linha_resultado['nome']) . '</td>';
+                                echo '<td><a href="discografia-visualizar.php?id=' . $linha_resultado['id'] . '" class="social-links">' . htmlspecialchars($linha_resultado['nome']) . '</a></td>';
                                 echo '<td>' . htmlspecialchars($linha_resultado['ano']) . '</td>';
                                 echo '<td>' . htmlspecialchars($linha_resultado['tipo']) . '</td>';
                                 echo '<td><img src="' . htmlspecialchars($linha_resultado['foto']) . '" alt="Foto do album" class="album-thumb"></td>';
